@@ -137,7 +137,7 @@ code {
   color:white;
 }
 @media (max-width:1250px) {
-  .letter .letter-correct .letter-incorrect{
+  .letter, .letter-correct, .letter-incorrect{
     font-size: 1.3em;
   }
   .displaybox{
@@ -162,8 +162,8 @@ code {
     width: 15px;
     height:15px;
   }
-  .letter .letter-correct .letter-incorrect{
-    font-size: 0.4em;
+  .letter,.letter-correct,.letter-incorrect{
+    font-size: 0.8em !important;
   }
   .displaybox{
     margin:0 40px;
