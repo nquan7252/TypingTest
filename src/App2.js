@@ -3,8 +3,8 @@ import './App.css';
 import React from 'react';
 import DisplayBox from './components/DisplayBox';
 import TextBox from './components/TextBox';
-
-class App extends React.Component {
+import Logo from './components/Logo';
+class App2 extends React.Component {
   constructor(){
     super();
     this.state={
@@ -13,7 +13,7 @@ class App extends React.Component {
   }
   componentDidMount(){
     let arr=[];
-    fetch('https://random-word-api.herokuapp.com/word?number=10').then(data=>data.json()).then(json=>{
+    fetch('https://random-word-api.herokuapp.com/word?number=10&swear=0').then(data=>data.json()).then(json=>{
       for (let i=0;i<json.length;i++){
         if (i!=json.length-1) json[i]=json[i]+" "
         arr[i]=json[i].split('');
@@ -25,19 +25,25 @@ class App extends React.Component {
         testarr.push(single);
       }
       console.log(testarr)
-      this.setState({words:arr,pointer:0,bigarr:testarr})
+      this.setState({words:arr,pointer:0,bigarr:testarr,end:false})
   })
   }
   render() { 
+  
     if (this.state.bigarr!=null){
     return <div>
-       <DisplayBox data={this.state.words} bigarr={this.state.bigarr}></DisplayBox>
+      <Logo></Logo>
+       <DisplayBox data={this.state.words} bigarr={this.state.bigarr} onRestart={this.restart} end={this.state.end}></DisplayBox>
     </div>;
   }
   else
-  return <span>hi</span>
+  return <span>Loading...</span>
+  }
+  restart=()=>{
+    console.log('restart clicked')
+    this.componentDidMount();
   }
   
 }
  
-export default App;
+export default App2;

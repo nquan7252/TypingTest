@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 class TextBox extends React.Component {
     render() { 
         return <div>
-            <input className='input' autoFocus type='text' id='inputbox' onKeyDown={this.preventBackSpace} onChange={this.props.fn}></input>
+            <input ref={(ip) => this.myInp = ip} className='input' autoFocus type='text' id='inputbox' onKeyDown={this.preventBackSpace} onChange={this.props.fn}></input>
         </div>;
     }
-    
+    componentDidUpdate(){
+        this.myInp.focus();
+
+    }
     preventBackSpace=(e)=>{
         var evt = e || window.event;
         if (evt) {
