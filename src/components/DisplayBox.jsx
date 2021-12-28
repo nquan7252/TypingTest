@@ -17,8 +17,10 @@ class DisplayBox extends React.Component {
     render() {
         if(this.state.end==false){ 
         return <div>
-            <div className='displaybox'>{this.getWords()}</div>
+            <div className='displaybox'>{this.getWords()}
             <TextBox fn={this.getChange}></TextBox>
+            </div>
+            
             <div className='restart-btn-container'>
             <span id='restart-btn' onClick={this.restart}><img src={require("../assets/refresh.png")} alt="name" /></span>
             </div>
