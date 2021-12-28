@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import App2 from './App2';
 import App1 from './App1'
 import Logo from './components/Logo';
+import Social from './components/Social';
 function Big (){
    const [value,setValue]=useState('');
    const[app1,setApp1]=useState(false);
@@ -34,6 +35,7 @@ function Big (){
         </Dropdown.Menu>
       </Dropdown>
       {value==''?'': <Button onClick={start} id='start-btn' variant="success">Start</Button>}
+      <Social></Social>
       </div>:(app1==true?<App1></App1>:<App2></App2>)
      )
 }

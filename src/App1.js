@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DisplayBox from './components/DisplayBox';
 import DisplayBoxCountDown from './components/DisplayBoxCountDown';
 import Logo from './components/Logo';
+import Social from './components/Social';
 class App2 extends React.Component {
     constructor(){
         super();
@@ -11,7 +12,7 @@ class App2 extends React.Component {
       }
       componentDidMount(){
         let arr=[];
-        fetch('https://random-word-api.herokuapp.com/word?number=30&swear=0').then(data=>data.json()).then(json=>{
+        fetch('https://random-word-api.herokuapp.com/word?number=300&swear=0').then(data=>data.json()).then(json=>{
           for (let i=0;i<json.length;i++){
             if (i!=json.length-1) json[i]=json[i]+" "
             arr[i]=json[i].split('');
@@ -22,7 +23,6 @@ class App2 extends React.Component {
             let single={value:bigarr[i],indice:i}
             testarr.push(single);
           }
-          console.log(testarr)
           this.setState({words:arr,pointer:0,bigarr:testarr,end:false})
       })
       }
@@ -32,6 +32,7 @@ class App2 extends React.Component {
         return <div>
           <Logo></Logo>
           <DisplayBoxCountDown data={this.state.words} bigarr={this.state.bigarr} onRestart={this.restart} end={this.state.end} ></DisplayBoxCountDown>
+          <Social></Social>
         </div>;
       }
       else
@@ -41,7 +42,6 @@ class App2 extends React.Component {
 
       }
       restart=()=>{
-        console.log('restart clicked')
         this.setState({
             words:null,pointer:null,bigarr:null
         })

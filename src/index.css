@@ -31,7 +31,7 @@ code {
 }
 .displaybox{
   height:100%;
-
+  position: relative;
   margin: 0 200px;
 }
 .letter{
@@ -58,7 +58,10 @@ code {
   border: transparent;
   caret-color: transparent;
   position: absolute;
- opacity: 0;
+  width:100%;
+  opacity: 0;
+  height:150px;
+  top:0;
 }
 #restart-btn img{
   height:25px;
@@ -106,4 +109,62 @@ code {
   font-size: 2em;
   color: white;
   width: 100%;
+}
+.social{
+  list-style: none;
+  position:absolute;
+  display: flex;
+  bottom:0;
+  left:0;
+  align-items: center;
+  justify-content: center;
+}
+.social-icon{
+  width:30px;
+  height:30px;
+  margin:0 20px;
+  filter:invert(1);
+  transition:1s
+}
+.social-icon:hover{
+  transform: translateY(-30px);
+}
+.table{
+  color:white;
+  font-size:3em;
+}
+.subtable{
+  color:white;
+}
+@media (max-width:1250px) {
+  .letter .letter-correct .letter-incorrect{
+    font-size: 1.3em;
+  }
+  .displaybox{
+    margin:0 100px;
+  }
+}
+@media (max-width:650px) {
+  #logo{
+    font-size: 1.6em;
+  }
+  #timer{
+    font-size: 1.5em
+  }
+  #restart-btn img{
+    width:20px;
+    height:20px
+  }
+  .restart-btn-container{
+    padding-top:20px;
+  }
+  .letter .letter-correct .letter-incorrect{
+    font-size: 0.9em;
+  }
+  .displaybox{
+    margin:0 40px;
+  }
+  .table{
+    font-size: 1.5em;
+  }
 }

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import TextBox from './TextBox';
 import Word from './Word';
 import Letter from './Letter';
+import Dashboard from './Dashboard';
 class DisplayBox extends React.Component {
    constructor(){
        super();
-       console.log('constructor called')
        this.state={
         pointer:0,status:null,
         end:false,
@@ -15,7 +15,6 @@ class DisplayBox extends React.Component {
    }
 
     render() {
-        console.log('render')
         if(this.state.end==false){ 
         return <div>
             <div className='displaybox'>{this.getWords()}</div>
@@ -27,8 +26,11 @@ class DisplayBox extends React.Component {
         }
         else
         return <div>
+            <Dashboard data={this.getResult()}></Dashboard>
+            <div className='restart-btn-container'>
             <span id='restart-btn' onClick={this.restart}><img src={require("../assets/refresh.png")} alt="name" /></span>
-            {this.getResult()}</div>
+            </div>
+            </div>
     }
     restart=()=>{
        
@@ -55,27 +57,25 @@ class DisplayBox extends React.Component {
 
     }
     getResult=()=>{
-        var wpm=30/(this.state.elapsedTime/60)
-        return <span>wpm is {Math.floor(wpm)}</span>
+        var wpm=Math.floor(30/(this.state.elapsedTime/60))
+        var time=this.state.elapsedTime;
+        var accuracy =Math.floor((this.props.bigarr.filter(e=>e.status=='right').length/this.props.bigarr.length)*100);
+        return {wpm:wpm,time:time,accuracy:accuracy}
     }
     getChange=(e)=>{
         let newArr=[...this.props.bigarr];
         if (this.state.pointer==newArr.length-1){
-            console.log('end');
             this.stopCounting();
             this.setState({pointer:this.state.pointer+1,status:'right',bigarr:newArr,end:true})
         }
         else if(e.target.value==this.props.bigarr[this.state.pointer].value){
             if(this.state.pointer==0){
-                console.log('start timer')
             this.startCounting();
             }
-            console.log('right');
             newArr[this.state.pointer].status='right'
         this.setState({pointer:this.state.pointer+1,status:'right',bigarr:newArr,end:false,elapsedTime:this.state.elapsedTime,countVar:this.state.countVar})}
         else{
             if(this.state.pointer==0){
-                console.log('start timer')
             this.startCounting();
             }
             newArr[this.state.pointer].status='wrong'
@@ -89,14 +89,12 @@ class DisplayBox extends React.Component {
     }
     stopCounting=()=>{
         clearInterval(this.state.countVar);
-        console.log(this.state.elapsedTime)
     }
     getWordKey=()=>{
         return this.state.wordkey++;
     }
     startCounting() {
          var countVar=setInterval(()=>{
-            console.log(this.state.elapsedTime)
             this.setState({elapsedTime:this.state.elapsedTime+1,countVar:countVar})}, 1000);
       }
 }

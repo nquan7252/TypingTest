@@ -6,12 +6,10 @@ const Letter=(props)=> {
     const [reset,setReset]=useState(false);
     useEffect(()=>{
       
-        console.log('useEffect called')
         if(ref.current&&ref.current.offsetWidth==0){
         setNewLine(true);
         props.getData(props.id);}
         return ()=>{
-            console.log('umounted')
         }
     },[])
         if (props.status==null&&props.pointer==props.id){
