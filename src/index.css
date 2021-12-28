@@ -158,8 +158,12 @@ code {
   .restart-btn-container{
     padding-top:20px;
   }
+  .social-icon{
+    width: 15px;
+    height:15px;
+  }
   .letter .letter-correct .letter-incorrect{
-    font-size: 0.9em;
+    font-size: 0.4em;
   }
   .displaybox{
     margin:0 40px;
