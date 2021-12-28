@@ -7,17 +7,16 @@ class TextBox extends React.Component {
     }
     componentDidUpdate(){
         this.myInp.focus();
-
     }
     preventBackSpace=(e)=>{
-        var evt = e || window.event;
-        if (evt) {
-            var keyCode = evt.charCode || evt.keyCode;
+        var event = e || window.event;
+        if (event) {
+            var keyCode = event.charCode || event.keyCode;
             if (keyCode === 8) {
-                if (evt.preventDefault) {
-                    evt.preventDefault();
+                if (event.preventDefault) {
+                    event.preventDefault();
                 } else {
-                    evt.returnValue = false;
+                    event.returnValue = false;
                 }
             }
         }
