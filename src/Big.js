@@ -34,8 +34,8 @@ function Big (){
           <Dropdown.Item eventKey={"Paragraph"}>Paragraph</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
-      {value==''?'': <div style={{width:"100%"}}><Button onClick={start} id='start-btn' variant="success">Start</Button></div>}
-      <span style={{color:'white',marginTop:"20px"}}>*Since this app uses online API resource to generate random words, it might potentially contain inappropriate words and I'm currently working on a personal random word API to fix this. Sorry for the inconvenience and thank you for understanding.</span>
+      {value==''?'': <div style={{width:"100%",marginBottom:"30px"}}><Button onClick={start} id='start-btn' variant="success">Start</Button></div>}
+      <span style={{color:'white'}}>*Since this app uses online API resource to generate random words, it might potentially contain inappropriate words and I'm currently working on a personal random word API to fix this. Sorry for the inconvenience and thank you for understanding.</span>
       <Social></Social>
       </div>:(app1==true?<App1></App1>:<App2></App2>)
      )
