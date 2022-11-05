@@ -14,7 +14,7 @@ class App2 extends React.Component {
   }
   componentDidMount(){
     let arr=[];
-    fetch('https://random-word-api.herokuapp.com/word?number=30&swear=0').then(data=>data.json()).then(json=>{
+    fetch('https://random-word-api.herokuapp.com/word?number=30').then(data=>data.json()).then(json=>{
       for (let i=0;i<json.length;i++){
         if (i!=json.length-1) json[i]=json[i]+" "
         arr[i]=json[i].split('');
